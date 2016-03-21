@@ -1,3 +1,29 @@
-<div class="row">
-	{{hello}}
+<div layout="row">
+  <div flex="30">
+  	<treecontrol class="tree-light"
+	   tree-model="data"
+	   options="treeOptions"
+	   on-selection="showOptions(node, selected)"
+	   expanded-nodes="expandedNodes">
+	   <md-button ng-class="{'md-raised md-primary': equality(node, selectedNode)}">{{bnf[node.label].label}}</md-button>
+	</treecontrol>
+  </div>
+  <div flex="30" data-ng-show="showContext">
+  	<h3>Виберіть дію</h3>
+  	<md-radio-group ng-model="selectedOption">
+      <md-radio-button ng-repeat="option in context"
+                       ng-value="option">
+          <span data-ng-repeat="(key, el) in option track by $index">{{bnf[el].label}} </span>
+      </md-radio-button>
+    </md-radio-group>
+    <md-button data-ng-click="addNodes()" flex="100" class="md-raised md-warn">
+    	Добавить
+	</md-button>
+  </div>
+	<div layout="column">
+	  Нехай це виводиться тут
+	</div>
 </div>
+
+
+
