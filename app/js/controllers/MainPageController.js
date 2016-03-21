@@ -1,5 +1,5 @@
 angular
-    .module('manageFlatfinderControllers')
+    .module('spLabControllers')
     .controller('MainPageController', ['$scope', MainPageController]);
 
 function MainPageController ($scope)
