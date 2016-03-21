@@ -1,26 +1,25 @@
 {
 	"program": {
 		"label" : "<program>",
+		"type" : "nonterminal",
 		"children" : [
 			["begin", "statement", "end"]
-		],
-		"isTerminal" : false,
-		"isValue" : false
+		]
 	},
 	"statement": {
 		"label" : "<statement>",
+		"type" : "nonterminal",
 		"children" : [
 			["variable", ":=", "expression"],
 			["statement", ";", "statement"],
 			["if", "condition", "then","statement","else","statement"],
 			["while","condition","do","statement"],
 			["skip"]
-		],
-		"isTerminal" : false,
-		"isValue" : false
+		]
 	},
 	"expression": {
 		"label" : "<expression>",
+		"type" : "nonterminal",
 		"children" : [
 			["number"],
 			["variable"],
@@ -28,12 +27,11 @@
 			["expression","-","expression"],
 			["expression","*","expression"],
 			["(","expression",")"]
-		],
-		"isTerminal" : false,
-		"isValue" : false
+		]
 	},
 	"condition": {
 		"label" : "<condition>",
+		"type" : "nonterminal",
 		"children" : [
 			["condition","=","condition"],
 			["condition",">","condition"],
@@ -41,162 +39,154 @@
 			["condition","!","condition"],
 			["(","condition",")"]
 
-		],
-		"isTerminal" : false,
-		"isValue" : false
+		]
 	},
 	"variable": {
 		"label" : "<variable>",
+		"type" : "nonterminal",
 		"children" : [
-		],
-		"isTerminal" : false,
-		"isValue" : true
+			["text"]
+		]
 	},
 	"number": {
 		"label" : "<number>",
+		"type" : "nonterminal",
 		"children" : [
-		],
-		"isTerminal" : false,
-		"isValue" : true
+			["num"]
+		]
 	},
 	"begin" : {
 		"label" : "begin",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"end" : {
 		"label" : "end",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"if" : {
 		"label" : "if",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"then" : {
 		"label" : "then",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"else" : {
 		"label" : "else",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"while" : {
 		"label" : "while",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"do" : {
 		"label" : "do",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"skip" : {
 		"label" : "skip",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"+" : {
 		"label" : "+",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"-" : {
 		"label" : "-",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"*" : {
 		"label" : "*",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"(" : {
 		"label" : "(",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	")" : {
 		"label" : ")",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 	"=" : {
 		"label" : "=",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 
 	">" : {
 		"label" : ">",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 
 	"v" : {
 		"label" : "v",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 
 	"!" : {
 		"label" : "!",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 
 
 	":=" : {
 		"label" : ":=",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 
 	";" : {
 		"label" : ";",
+		"type" : "terminal",
 		"children" : [
-		],
-		"isTerminal" : true,
-		"isValue" : false
+		]
 	},
 
+	"text" : {
+		"label" : "value",
+		"type" : "variable",
+		"children" : [
+		]
+	},
+
+	"num" : {
+		"label" : "value",
+		"type" : "number",
+		"children" : [
+		]
+	}
 }
