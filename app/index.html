@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" ng-app="manageFlatfinder">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage Flatfinder</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+</head>
+<body>
+<!-- Navigation -->
+    <!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display --
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Flatfinder manage</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling --
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#/buildings/">Новостройки</a>
+                    </li>
+                
+                </ul>
+            </div>
+            <!-- /.navbar-collapse --
+        </div>
+        <!-- /.container --
+    </nav>-->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Flatfinder manage</a>
+        </div>
+        <application-tabs class="app-tabs"> </application-tabs>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div ng-view class="view-frame"></div>
+  </div>
+
+
+  <!-- Controllers -->
+
+  <script src="js/controllers/MainPageController.js"></script>
+
+  <!-- Services -->
+
+  <!-- Filters -->
+
+  <!-- Directives -->
+
+
+
+
+
+</body>
+</html>
