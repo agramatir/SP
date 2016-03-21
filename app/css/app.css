@@ -1,0 +1,72 @@
+/* app css stylesheet */
+
+body
+{
+  padding-top: 70px;
+}
+
+.editable-field
+{
+  cursor: pointer;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+.edit-column
+{
+	width: 50%;
+	text-align: right;
+}
+
+.center
+{
+  text-align: center;
+}
+
+.edit-icon:hover {
+  color: green;
+}
+
+.order-by-icon
+{
+  font-size: 16px;
+  float: right;
+  cursor: pointer;
+}
+.edit-icon
+{
+  font-size: 16px;
+}
+
+.nav-tabs
+{
+  border-bottom: none;
+  float: right;
+  min-height: 50px;
+}
+.nav-tabs > li
+{
+  min-height: 50px;
+}
+.nav-tabs > li > a
+{
+  margin-top: 8px;
+  padding-right: 20px;
+  overflow: hidden;
+  /*max-width: 100px;*/
+}
+.nav-tabs > li:hover .close-tab-icon, .nav-tabs > li.active .close-tab-icon
+{
+  color: #333;
+}
+.close-tab-icon {
+  position: absolute;
+  top: 15px;
+  right: 2px;
+  cursor: pointer;
+  color: #ffffff;
+}
