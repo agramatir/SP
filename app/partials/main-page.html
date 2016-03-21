@@ -8,7 +8,8 @@
 	   <md-button ng-class="{'md-raised md-primary': equality(node, selectedNode)}">{{bnf[node.label].label || node.label}}</md-button>
 	</treecontrol>
   </div>
-  <div flex="30" data-ng-show="showContext">
+  <div flex></div>
+  <div flex="25" data-ng-show="showContext">
   	<h3>Виберіть дію</h3>
   	<md-radio-group ng-model="selectedOption">
       <md-radio-button ng-repeat="option in context"
@@ -30,16 +31,17 @@
 	</md-button>
   </div>
   
-	<div layout="column">
-	  <div  id="help-info-for-rendering"  >{{data}}</div>
+<div layout="column" flex="45">
+	<md-switch ng-model="showProgramText" aria-label="Switch" id="bug-fix">
+	    Переключити режим
+	 </md-switch>
+	  <div  id="help-info-for-rendering" ng-show="false">{{data}}</div>
 
 
-    <div id="attach">
-    <svg id="svg-canvas" class="main-svg"></svg>
-  </div>
+    <svg id="svg-canvas" class="main-svg" ng-show="!showProgramText" style="height: 100%"></svg>
 
 
-  <div id="program-code" style="font-size:25px;">
+  <div id="program-code" style="font-size:25px;" ng-show="showProgramText">
     
   </div>
 
@@ -176,168 +178,16 @@
         }));
   }
 
-
-var data = [
-          { 
-            "label":"<program>",
-            "type":"nonterminal",
-            "children":[
-                { 
-                  "label":"begin",
-                  "type":"terminal",
-                  "children":[
-                  ]
-                },
-                {
-                  "label":"<statement>",
-                  "type":"nonterminal",
-                  "children":[
-                          { 
-                            "label":"while",
-                            "type":"terminal",
-                            "children":[
-                            ]
-                          },
-                          {
-                            "label":"<condition>",
-                            "type":"nonterminal",
-                            "children":[
-                          
-                                {
-                                  "label":"<expression>",
-                                  "type":"nonterminal",
-                                  "children":[
-                                    {
-                                      "label":"<variable>",
-                                      "type":"nonterminal",
-                                      "children":[
-                                        {
-                                          "label":"N",
-                                          "type":"variable",
-                                          "children":[
-                                             
-                                          ]
-                                        }     
-                                      ]
-                                    }
-                                  ]
-                                },
-                                      {
-                                  "label":"=",
-                                  "type":"terminal",
-                                  "children":[
-                                     
-                                  ]
-                                },
-
-                                {
-                                  "label":"<expression>",
-                                  "type":"nonterminal",
-                                  "children":[
-                                     {
-                                      "label":"<number>",
-                                      "type":"nonterminal",
-                                      "children":[
-                                        {
-                                          "label":"2",
-                                          "type":"number",
-                                          "children":[
-                                             
-                                          ]
-                                        }     
-                                      ]
-                                    }
-                                  ]
-                                }
-
-                            ]
-                          },
-                          {
-                            "label":"do",
-                            "type":"terminal",
-                            "children":[
-                              
-                            ]
-                        },
-                        {
-                            "label":"<statement>",
-                            "type":"nonterminal",
-                            "children":[
-
-
-                                {
-                                "label":"<variable>",
-                                "type":"nonterminal",
-                                "children":[
-                                  
-                                      
-
-
-                                  {
-                                "label":"N",
-                                "type":"variable",
-                                "children":[
-                                  ]
-                                }
-
-
-                                  ]
-                                },
-
-                                {
-                                  "label":":=",
-                                  "type":"terminal",
-                                  "children":[]
-
-                                },
-
-                                {
-                                  "label":"<expression>",
-                                  "type":"nonterminal",
-                                  "children":[
-                                    {
-                                      "label":"<number>",
-                                      "type":"nonterminal",
-                                      "children":[
-                                        {
-                                          "label":"3",
-                                          "type":"number",
-                                          "children":[
-                                            
-                                          ]
-
-                                        }
-                                      ]
-
-                                    }
-                                  ]
-
-                                }
-
-
-                              
-                            ]
-                        }
-                  ]
-                },
-                { 
-                  "label":"end",
-                  "type":"terminal",
-                  "children":[
-                  ]
-                }
-            ]
-          }
-        ];
-
         
 
       $("#help-info-for-rendering").bind("DOMSubtreeModified",function(){
-          var data = $("#help-info-for-rendering").html();
-          
-        renderGraph(data);
-        $("#program-code").html("");
-        writeProgramCode(data);
+      	setTimeout(function(){ 
+      		var data = $("#help-info-for-rendering").html();
+      		renderGraph(data);
+	        $("#program-code").html("");
+	        writeProgramCode(data);
+      	}, 500);
+     
       });
   
 

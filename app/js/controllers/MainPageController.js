@@ -36,6 +36,8 @@ function MainPageController ($scope, Tree)
  	    }
 	};
 
+	$scope.showProgramText = false;
+
 
 	$scope.showOptions = function(node, selected)
 	{
