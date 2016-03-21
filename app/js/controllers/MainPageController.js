@@ -8,7 +8,7 @@ function MainPageController ($scope, Tree)
 	$scope.data = Tree.data;
 	$scope.equality = function(a, b)
 	{
-		if (a === undefined || b === undefined)
+		if (a === undefined || b === undefined || a === null || b === null)
                 return false;
            return a.$$hashKey == b.$$hashKey;
 	};
@@ -46,18 +46,23 @@ function MainPageController ($scope, Tree)
 			$scope.selectedNode = new Object();
 			return;
 		}
-		if(node.children.length)
+		if(node.children.length > 0)
 		{
 			$scope.showRemoveContext = true;
+			$scope.showContext = false;
 			return;
+		}
+		if(node.type == 'variable' || node.type = 'number')
+		{
+			$scope.showEditContext;
 		}
 		$scope.showRemoveContext = false;
 		$scope.selectedNode = node;
 		$scope.context = Tree.getPossibleChildren(node.label);
 		if(!$scope.context.length)
 		{
-			return;
 			$scope.showContext = true;
+			return;
 		}
 		$scope.showContext = true;
 		$scope.selectedOption = $scope.context[0];
