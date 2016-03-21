@@ -31,23 +31,28 @@
   </div>
   
 	<div layout="column">
-	  
+	  <div  id="help-info-for-rendering"  >{{data}}</div>
+
+
     <div id="attach">
     <svg id="svg-canvas" class="main-svg"></svg>
   </div>
 
 
-  <div id="program-code" style="font-size:25px; ;margin-top: 600px;">
+  <div id="program-code" style="font-size:25px;">
     
   </div>
 
 	</div>
 </div>
 
+
+
 <script>
 
 
   var writeProgramCode = function(data) {
+    var data = JSON.parse(data);
     var writeNode = function(node,parentJQuery,depth) {
       var s = "";
       if (node.children.length==0)
@@ -85,6 +90,7 @@
   }
 
   var renderGraph = function(data) {
+        var data = JSON.parse(data);
         $("#svg-canvas").empty();
 
         
@@ -324,10 +330,16 @@ var data = [
           }
         ];
 
-  
+        
 
-  renderGraph(data);
-  writeProgramCode(data);
+      $("#help-info-for-rendering").bind("DOMSubtreeModified",function(){
+          var data = $("#help-info-for-rendering").html();
+          
+        renderGraph(data);
+        $("#program-code").html("");
+        writeProgramCode(data);
+      });
+  
 
 </script>
 
