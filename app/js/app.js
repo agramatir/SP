@@ -7,10 +7,16 @@ angular
    [
     'spLab.config',
     'spLabControllers',
+    'spLabServices',
+    'treeControl',
+    'ngMaterial'
   ]);
 
   angular
     .module('spLabControllers', []);
+
+  angular
+    .module('spLabServices', []);
 
   
 

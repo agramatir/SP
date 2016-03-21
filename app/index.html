@@ -6,7 +6,14 @@
   <title>Manage Flatfinder</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="css/app.css">
+
+
+  
+<!-- link for CSS when using the tree as a Dom element -->
+  <link rel="stylesheet" type="text/css" href="bower_components/angular-tree-control/css/tree-control.css">
+<!-- link for CSS when using the tree as an attribute -->
+  <link rel="stylesheet" type="text/css" href="bower_components/angular-tree-control/css/tree-control-attribute.css">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
@@ -15,6 +22,15 @@
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/jquery-ui/jquery-ui.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script type="text/javascript" src="bower_components/angular-tree-control/angular-tree-control.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+    <link rel="stylesheet" href="css/app.css">
+  
+
   <script src="js/app.js"></script>
   <script src="js/config.js"></script>
 </head>
@@ -35,7 +51,7 @@
   </div>
 
   <div class="container-fluid">
-    <div ng-view class="view-frame"></div>
+    <div ng-view flex layout="column"></div>
   </div>
 
 
@@ -45,6 +61,7 @@
 
   <!-- Services -->
 
+  <script src="js/services/Tree.js"></script>
   <!-- Filters -->
 
   <!-- Directives -->

@@ -1,3 +1,29 @@
-<div class="row">
-	{{hello}}
+<div layout="row">
+  <div flex="30">
+  	<treecontrol class="tree-classic"
+	   tree-model="data"
+	   options="treeOptions"
+	   on-selection="showOptions(node, selected)"
+	   selected-node="node1">
+	   label: {{node.label}} children {{node.children.length}}
+	</treecontrol>
+  </div>
+  <div flex="30" data-ng-show="showContext">
+  	<md-radio-group ng-model="selectedOption">
+      <md-radio-button ng-repeat="option in context"
+                       ng-value="option">
+          <span data-ng-repeat="(key, el) in option track by $index">{{bnf[el].label}} </span>
+      </md-radio-button>
+    </md-radio-group>
+    <md-button data-ng-click="addNodes()">
+    	Добавить
+	</md-button>
+  </div>
+	<div layout="column">
+	  <div flex>selected node: {{selectedNode.label}}</div>
+	  <div flex>Second item in column</div>
+	</div>
 </div>
+
+
+
