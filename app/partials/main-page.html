@@ -32,7 +32,7 @@
   </div>
   
 <div layout="column" flex="45">
-	<md-switch ng-model="showProgramText" aria-label="Switch" id="bug-fix">
+	<md-switch ng-model="showProgramText" aria-label="Switch" id="code-graph-toggle">
 	    Переключити режим
 	 </md-switch>
 	  <div  id="help-info-for-rendering" ng-show="false">{{data}}</div>
@@ -179,6 +179,14 @@
   }
 
         
+        $("#code-graph-toggle").click(function(){
+          setTimeout(function(){ 
+          var data = $("#help-info-for-rendering").html();
+          renderGraph(data);
+          $("#program-code").html("");
+          writeProgramCode(data);
+        }, 20);
+        });
 
       $("#help-info-for-rendering").bind("DOMSubtreeModified",function(){
       	setTimeout(function(){ 
@@ -186,7 +194,7 @@
       		renderGraph(data);
 	        $("#program-code").html("");
 	        writeProgramCode(data);
-      	}, 500);
+      	}, 100);
      
       });
   
