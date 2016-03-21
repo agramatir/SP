@@ -5,7 +5,7 @@
 	   options="treeOptions"
 	   on-selection="showOptions(node, selected)"
 	   expanded-nodes="expandedNodes">
-	   <md-button ng-class="{'md-raised md-primary': equality(node, selectedNode)}">{{bnf[node.label].label}}</md-button>
+	   <md-button ng-class="{'md-raised md-primary': equality(node, selectedNode)}">{{bnf[node.label].label || node.label}}</md-button>
 	</treecontrol>
   </div>
   <div flex="30" data-ng-show="showContext">
@@ -17,9 +17,19 @@
       </md-radio-button>
     </md-radio-group>
     <md-button data-ng-click="addNodes()" flex="100" class="md-raised md-warn">
-    	Добавить
+    	Добавити
 	</md-button>
   </div>
+  <div flex="30" data-ng-show="showEditContext">
+  	<md-input-container>
+        <label>Введіть значення</label>
+        <input type="text" ng-model="valueNodeLabel">
+     </md-input-container>
+    <md-button data-ng-click="addValue()" flex="100" class="md-raised md-warn">
+    	Добавити
+	</md-button>
+  </div>
+  
 	<div layout="column">
 	  
     <div id="attach">
