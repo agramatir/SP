@@ -6,7 +6,14 @@ function MainPageController ($scope, Tree)
 {
 	$scope.hello = "Hello World";
 	$scope.data = Tree.data;
+	$scope.equality = function(a, b)
+	{
+		if (a === undefined || b === undefined)
+                return false;
+           return a.$$hashKey == b.$$hashKey;
+	};
 	$scope.treeOptions = {
+		multiSelection: false,
 	    nodeChildren: "children",
 	    dirSelectable: true,
 	    injectClasses: {
@@ -17,20 +24,42 @@ function MainPageController ($scope, Tree)
 	        iCollapsed: "a4",
 	        iLeaf: "a5",
 	        label: "a6",
-	        labelSelected: "a8"
-	    }
+	        labelSelected: "md-raised md-primary"
+	    },
+	    equality: $scope.equality,
+ 	    templateUrl: 'partials/tree-control.html',
+ 	    isSelectable: function(node)
+ 	    {
+ 	    	if(node.type == 'terminal')
+ 	    		return false;
+ 	    	return true;
+ 	    }
 	};
+
 
 	$scope.showOptions = function(node, selected)
 	{
 		if(!selected)
 		{
 			$scope.showContext = false;
+			$scope.showRemoveContext = false;
+			$scope.selectedNode = new Object();
 			return;
 		}
+		if(node.children.length)
+		{
+			$scope.showRemoveContext = true;
+			return;
+		}
+		$scope.showRemoveContext = false;
 		$scope.selectedNode = node;
-		$scope.showContext = true;
 		$scope.context = Tree.getPossibleChildren(node.label);
+		if(!$scope.context.length)
+		{
+			return;
+			$scope.showContext = true;
+		}
+		$scope.showContext = true;
 		$scope.selectedOption = $scope.context[0];
 	};
 
@@ -39,7 +68,12 @@ function MainPageController ($scope, Tree)
 		angular.forEach($scope.selectedOption, function(value, key){
 			Tree.addNode($scope.selectedNode, value);
 		});
+		$scope.expandedNodes.push($scope.selectedNode);
+		$scope.selectedNode = null;
+		$scope.showContext = false;
 	};
+
+	$scope.expandedNodes = [];
 
 
 

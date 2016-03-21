@@ -14,6 +14,7 @@ function Tree($http)
 	var data = [
 		{
 			label: 'program',
+			type: 'nonterminal',
 			children: []
 		}];
 	return {
@@ -21,6 +22,7 @@ function Tree($http)
 		{
 			root.children.push({
 				label: nodeLabel,
+				type: bnf[nodeLabel].type,
 				children: []
 			});
 		},
