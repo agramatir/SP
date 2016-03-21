@@ -52,7 +52,7 @@ function MainPageController ($scope, Tree)
 			$scope.showContext = false;
 			return;
 		}
-		if(node.type == 'variable' || node.type = 'number')
+		if(node.type == 'variable' || node.type == 'number')
 		{
 			$scope.showEditContext;
 		}

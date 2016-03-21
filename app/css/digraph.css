@@ -1,0 +1,56 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden
+}
+
+text {
+  font-weight: 300;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+rect {
+  fill: #fff;
+}
+
+.node > rect {
+  stroke-width: 1px;
+  stroke: #222;
+  fill: none;
+  opacity: 0.5;
+}
+
+.edge rect {
+  fill: #fff
+}
+
+.edgePath path {
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+.node-type-nonterminal > rect {
+  fill: #fff;
+}
+
+.node-type-terminal > rect {
+  fill: #7e7e7e;
+}
+
+.node-type-variable > rect {
+  fill: #92ff7d;
+}
+
+.node-type-number > rect {
+  fill: #fdb9ff;
+}
+
+.main-svg {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #999;
+}
