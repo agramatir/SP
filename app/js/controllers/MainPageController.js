@@ -107,4 +107,18 @@ function MainPageController ($scope, Tree)
 	$scope.context = [];
     $scope.bnf = Tree.bnf;
 
+    $scope.exportData = function()
+    {
+    	return "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify($scope.data));
+    }
+
+    $scope.ifile = null;
+
+    $scope.$watch('ifile', function(newValue, oldValue, scope) {
+    	if(newValue instanceof Array)
+    	{
+    		Tree.data = $scope.data = $scope.ifile;
+    	}
+    }, true);
+
 }

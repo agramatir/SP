@@ -176,4 +176,35 @@ angular
 			}
 		}
 
-	});
+	})
+	.directive('uploadfile', function ($timeout) {
+        return {
+          restrict: 'A',
+          link: function(scope, element) {
+
+            element.bind('click', function(e) {
+            	angular.element('#upload-container').find('#upload').trigger('click');
+            });
+          }
+        };
+    })
+    .directive("fileread", [function () {
+	    return {
+	        scope: {
+	            fileread: "="
+	        },
+	        link: function (scope, element, attributes) {
+	            element.bind("change", function (changeEvent) {
+	                var reader = new FileReader();
+	                reader.onload = function (loadEvent) {
+	                    scope.$apply(function () {
+	                        scope.fileread = loadEvent.target.result;
+	                        scope.fileread = scope.fileread.replace('data:;base64,', '');
+	                        scope.fileread = angular.fromJson(atob(scope.fileread));
+	                    });
+	                }
+	                reader.readAsDataURL(changeEvent.target.files[0]);
+	            });
+	        }
+	    }
+	}]);

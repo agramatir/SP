@@ -1,15 +1,34 @@
-<div layout="row">
+<md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>
+          <span>Системне програмування. Побудова програм на мові SIPL</span>
+        </h2>
+        <span flex></span>
+        <a href="data: {{exportData()}}" download="data.json">
+          <md-button>Експортувати</md-button>
+        </a>
+        <span id="upload-container">
+          <md-button uploadfile>
+            Імпортувати
+          </md-button>
+          <input fileread="ifile" type="file" placeholder="Імпортувати" ng-show="false" id="upload">
+        </span>
+      </div>
+  </md-toolbar>
+<md-content  layout-fill>
+<div layout="row"  layout-fill>
   
-  <div flex="30">
-  <md-button data-ng-click="rollback()" >
-      Д
+  <div flex="25">
+  <md-button data-ng-click="rollback()" class="md-accent">
+      <md-icon class="material-icons">undo</md-icon> 
+      Відмінити останню дію
   </md-button>
   	<treecontrol class="tree-light"
 	   tree-model="data"
 	   options="treeOptions"
 	   on-selection="showOptions(node, selected)"
 	   expanded-nodes="expandedNodes">
-	   <span ng-class="{'md-raised md-primary': equality(node, selectedNode)}">{{bnf[node.label].label || node.label}}</span>
+	   <md-button ng-class="{'md-raised md-primary': equality(node, selectedNode)}">{{bnf[node.label].label || node.label}}</md-button>
 	</treecontrol>
   </div>
   <div flex></div>
@@ -25,26 +44,26 @@
     	Добавити
 	</md-button>
   </div>
-  <div flex="30" data-ng-show="showEditContext">
-  	<md-input-container>
-        <label>Введіть значення</label>
-        <input type="text" ng-model="valueNodeLabel">
-     </md-input-container>
+  <div flex="25" data-ng-show="showEditContext">
+    <div>
+    	<md-input-container>
+          <label>Введіть значення</label>
+          <input type="text" ng-model="valueNodeLabel">
+       </md-input-container>
+     </div>
     <md-button data-ng-click="addValue()" flex="100" class="md-raised md-warn">
     	Добавити
 	</md-button>
   </div>
   
-<div layout="column" flex="45">
+<div layout="column" flex="50"  layout-fill>
+
 	<md-switch ng-model="showProgramText" aria-label="Switch" id="code-graph-toggle">
 	    Переключити режим
-	 </md-switch>
-	  <div  id="help-info-for-rendering" ng-show="false">{{data}}</div>
-
-
-    <div  ng-show="!showProgramText">
-    	<svg id="svg-canvas" class="main-svg" style="height: 100%" tree-graph data="data" indicator="showProgramText" bnf="bnf"></svg>
-    </div>
+	</md-switch>
+  <div  ng-show="!showProgramText"  style="height: 100%" >
+  	<svg id="svg-canvas" class="main-svg" style="height: 83%; overflow: hidden" tree-graph data="data" indicator="showProgramText" bnf="bnf"></svg>
+  </div>
 
   <div style="font-size:25px;" ng-show="showProgramText" program-code data="data"></div>
     
@@ -52,6 +71,7 @@
 
 	</div>
 </div>
+</md-content>
 
 
 
