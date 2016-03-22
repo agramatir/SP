@@ -113,7 +113,7 @@ angular
         for (var key in nodes) {
           var node = nodes[key];
           g.setNode(node.id, {
-            label: bnf[node.label].label,
+            label: node.label,
             class: node.nodeclass,
             //  round edges
             rx: 5,
