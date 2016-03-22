@@ -58,6 +58,14 @@ function MainPageController ($scope, Tree)
 		}
 		if(node.type == 'variable' || node.type == 'number')
 		{
+			if(node.type == 'variable')
+			{
+				$scope.regex = '[a-zA-Z]+';
+			}
+			else
+			{
+				$scope.regex = '\\d+';
+			}
 			$scope.selectedNode = node;
 			$scope.showEditContext = true;
 			return;
@@ -79,6 +87,10 @@ function MainPageController ($scope, Tree)
 
 	$scope.addValue = function()
 	{
+		if(!$scope.valueForm.value.$valid)
+		{
+			return;
+		}
 		$scope.selectedNode.label = $scope.valueNodeLabel;
 		$scope.showEditContext = false;
 		$scope.valueNodeLabel = null;

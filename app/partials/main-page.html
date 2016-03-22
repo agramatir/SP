@@ -46,14 +46,21 @@
   </div>
   <div flex="25" data-ng-show="showEditContext">
     <div>
+      <form name="valueForm">
     	<md-input-container>
           <label>Введіть значення</label>
-          <input type="text" ng-model="valueNodeLabel">
+          <input type="text" ng-model="valueNodeLabel" ng-pattern="regex" required name="value">
+          <div ng-messages="valueForm.value.$error" role="alert">
+          <div ng-message-exp="['required', pattern']">
+            Введіть корректне значення.
+          </div>
+        </div>
        </md-input-container>
      </div>
     <md-button data-ng-click="addValue()" flex="100" class="md-raised md-warn">
     	Додати
 	</md-button>
+</form>
   </div>
   
 <div layout="column" flex="50"  layout-fill>
