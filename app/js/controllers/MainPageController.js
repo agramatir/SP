@@ -92,7 +92,12 @@ function MainPageController ($scope, Tree)
 		$scope.expandedNodes.push($scope.selectedNode);
 		$scope.selectedNode = null;
 		$scope.showContext = false;
+		Tree.addNewVersion();
 	};
+
+	$scope.rollback = function() {
+		$scope.data = Tree.rollback();
+	}
 
 	$scope.expandedNodes = [];
 
