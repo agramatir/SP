@@ -199,7 +199,9 @@ angular
 	                reader.onload = function (loadEvent) {
 	                    scope.$apply(function () {
 	                        scope.fileread = loadEvent.target.result;
-	                        scope.fileread = scope.fileread.replace('data:;base64,', '');
+	                        var ind = scope.fileread.indexOf("base64,");
+	                        if (ind>=0)
+	                        	scope.fileread = scope.fileread.substr(ind+7);
 	                        scope.fileread = angular.fromJson(atob(scope.fileread));
 	                    });
 	                }
